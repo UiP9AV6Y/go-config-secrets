@@ -1,0 +1,10 @@
+{
+  "secrets": [
+    {
+      "value": "test1"
+    },
+    {
+      "value": "test2"
+    }
+  ]
+}
