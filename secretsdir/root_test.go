@@ -17,8 +17,7 @@ func TestNew(t *testing.T) {
 		"404.json": {
 			wantError: "no such file or directory",
 		},
-		"blank.txt": {
-		},
+		"blank.txt": {},
 		"secret.txt": {
 			wantValue: "test",
 		},

@@ -11,7 +11,7 @@ import (
 
 func TestNew(t *testing.T) {
 	tests := map[string]struct {
-		haveRef   string
+		haveRef string
 
 		wantError string
 		wantValue string

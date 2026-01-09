@@ -10,7 +10,7 @@ import (
 // returns the query value as lookup result.
 func NewRefManager() config_secrets.SecretManager {
 	fetch := func(_ context.Context, ref string) (string, error) {
-		return ref, err
+		return ref, nil
 	}
 
 	return config_secrets.SecretManagerFunc(fetch)

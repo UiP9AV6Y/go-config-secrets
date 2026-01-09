@@ -20,7 +20,7 @@ func New(prefix string, f func(string) string) config_secrets.SecretManager {
 			return v, nil
 		}
 
-		return "", fmt.Errorf("secret lookup did not yield a value for %q", k)
+		return "", config_secrets.NewSecretNotFoundError(k)
 	}
 
 	return config_secrets.SecretManagerFunc(fetch)

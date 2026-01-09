@@ -15,7 +15,7 @@ func New(rp ReaderProvider) config_secrets.SecretManager {
 	fetch := func(ctx context.Context, ref string) (string, error) {
 		r, err := rp.Open(ctx, ref)
 		if err != nil {
-			return "", err
+			return "", config_secrets.NewSecretError(ref, err)
 		}
 		defer r.Close()
 

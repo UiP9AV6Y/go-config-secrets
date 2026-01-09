@@ -28,7 +28,7 @@ func New(dir string) (config_secrets.SecretManager, error) {
 func (s *sec) Fetch(ctx context.Context, ref string) (string, error) {
 	b, err := s.root.ReadFile(ref)
 	if err != nil {
-		return "", err
+		return "", config_secrets.NewSecretError(ref, err)
 	}
 
 	return string(bytes.TrimSpace(b)), nil

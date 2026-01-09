@@ -33,7 +33,7 @@ func New(query string, r secretsio.ReaderProvider) (config_secrets.SecretManager
 func (s *sec) Fetch(ctx context.Context, ref string) (string, error) {
 	rc, err := s.rdr.Open(ctx, ref)
 	if err != nil {
-		return "", err
+		return "", config_secrets.NewSecretError(ref, err)
 	}
 	defer rc.Close()
 
@@ -46,12 +46,12 @@ func (s *sec) Fetch(ctx context.Context, ref string) (string, error) {
 
 	nodes := s.path.Select(v)
 	if l := len(nodes); l != 1 {
-		return "", fmt.Errorf("JSON path query yielded %d results", l)
+		return "", config_secrets.NewSecretError(ref, fmt.Errorf("JSON path query yielded %d results", l))
 	}
 
 	val, ok := nodes[0].(string)
 	if !ok {
-		return "", fmt.Errorf("JSON path query yielded %T instead of string", nodes[0])
+		return "", config_secrets.NewSecretError(ref, fmt.Errorf("JSON path query yielded %T instead of string", nodes[0]))
 	}
 
 	return val, nil

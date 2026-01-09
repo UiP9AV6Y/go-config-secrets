@@ -14,7 +14,7 @@ func New(refs map[string]string) config_secrets.SecretManager {
 			return v, nil
 		}
 
-		return "", fmt.Errorf("secret map does not contain a value for %q", ref)
+		return "", config_secrets.NewSecretNotFoundError(ref)
 	}
 
 	return config_secrets.SecretManagerFunc(fetch)
