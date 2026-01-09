@@ -5,7 +5,7 @@ go 1.25.4
 replace github.com/UiP9AV6Y/go-config-secrets => ..
 
 require (
-	github.com/UiP9AV6Y/go-config-secrets v0.0.0-00010101000000-000000000000
+	github.com/UiP9AV6Y/go-config-secrets v0.2.0
 	github.com/prometheus/common v0.67.2
 	gotest.tools/v3 v3.5.2
 )
